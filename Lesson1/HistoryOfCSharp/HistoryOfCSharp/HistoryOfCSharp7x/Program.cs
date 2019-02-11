@@ -15,7 +15,7 @@ namespace HistoryOfCSharp7x
         //Async main
         static async Task Main(string[] args)
         {
-            var list = await Main();
+            var list = await Default();
             var result = list.Select(c => (c.Length, c.First())).First();
             //infer tuple names
             Console.WriteLine(result.Length);
@@ -23,7 +23,6 @@ namespace HistoryOfCSharp7x
             //digit seperators
             var x = 1_000_000;
             //  won't compile
-            // ref var r = ref (list != null ? ref list[0] : ref list[1]);
             ConsumeRef();
             Console.WriteLine(People[0].Name);
 
@@ -44,7 +43,12 @@ namespace HistoryOfCSharp7x
         //Variables(local or parameters)
         //Fields
         //Array locations
-        static readonly Person[] People = new Person[] { new Person() { Name = "Naruto" },  new Person() { Name = "Itachi" }, new Person() { Name = "Kisame" } };
+        static readonly Person[] People
+            = new Person[] {
+                new Person() { Name = "Naruto" },
+                new Person() { Name = "Itachi" },
+                new Person() { Name = "Kisame" } }
+            ;
         public static ref Person GetContactInformation(string fname, string lname)
         {
             // ...method implementation...
@@ -59,7 +63,7 @@ namespace HistoryOfCSharp7x
         }
 
         //default expressions
-        static async Task<List<string>> Main(CancellationToken token = default)
+        static async Task<List<string>> Default(CancellationToken token = default)
         {
             // This could also be replaced with the body
             // DoAsyncWork, including its await expressions:

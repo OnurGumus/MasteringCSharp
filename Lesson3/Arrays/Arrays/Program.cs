@@ -18,7 +18,7 @@ namespace Arrays
         [Benchmark]
         public void Loop1()
         {
-            int[] items = TestSuite.items;
+            var items = TestSuite.items;
             for (var i = 0; i < items.Length; i++)
             {
                 items[i] *= 3;
@@ -28,7 +28,7 @@ namespace Arrays
         [Benchmark]
         public void Loop2()
         {
-            int[] items = TestSuite.items;
+            var items = TestSuite.items;
             var count = itemCount - 10;
             for (var i = 0; i < count; i++)
             {
